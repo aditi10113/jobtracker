@@ -1,34 +1,63 @@
-# Job Tracker — Go Full-Stack Project
+## 🛠️ Tech Stack
 
-A complete job application tracking system built with a Go REST API backend and a responsive HTML/CSS/JavaScript frontend.
+### Frontend
 
-## Features
-- Dashboard with application statistics
-- Add, edit and delete job applications
-- Search jobs by company, role or location
-- Filter by application status
-- Status workflow: Applied → Screening → Interview → Offer/Rejected
-- Priority tracking
-- Interview date tracking
-- Notes
-- REST API
-- In-memory storage for zero setup
-- Responsive UI
+- **HTML5** — Structure and semantic markup
+- **CSS3** — Styling, responsive layout, and UI design
+- **JavaScript (Vanilla JS)** — Client-side logic and API communication
+- **Fetch API** — Communication between the frontend and Go REST API
 
-## Run
+### Backend
 
-```bash
-go run ./cmd/server
-```
+- **Go (Golang)** — Backend application and HTTP server
+- **Go `net/http`** — HTTP server and REST API routing
+- **REST API** — CRUD operations for job applications
+- **JSON** — Data exchange between frontend and backend
 
-Open: http://localhost:8080
+### Data Storage
 
-## API
-- GET /api/jobs
-- POST /api/jobs
-- PUT /api/jobs/{id}
-- DELETE /api/jobs/{id}
-- GET /api/stats
-- GET /api/health
+- **In-Memory Store** — Lightweight storage for the current version
+- **Mutex (`sync.RWMutex`)** — Safe concurrent access to application data
 
-For production, replace the in-memory store with PostgreSQL/MySQL and add authentication.
+> ⚠️ The current version uses in-memory storage. Data may be lost when the server restarts. A persistent database such as PostgreSQL can be added for production use.
+
+### Deployment & DevOps
+
+- **Vercel** — Application deployment and hosting
+- **Docker** — Containerized deployment
+- **Dockerfile.vercel** — Vercel container configuration
+- **Git & GitHub** — Source control and repository management
+
+### Development Tools
+
+- **Go Modules** — Dependency and package management
+- **Git** — Version control
+- **GitHub** — Source code hosting
+- **Vercel** — Continuous deployment
+
+---
+
+## 🏗️ Architecture
+
+```text
+┌─────────────────────────────┐
+│          Browser            │
+│                             │
+│  HTML + CSS + JavaScript    │
+└──────────────┬──────────────┘
+               │
+               │ HTTP / JSON
+               ▼
+┌─────────────────────────────┐
+│        Go Backend           │
+│                             │
+│       net/http              │
+│       REST API              │
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│      In-Memory Store        │
+│                             │
+│      Go structs + Mutex     │
+└─────────────────────────────┘

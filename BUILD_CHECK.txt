@@ -1,0 +1,6 @@
+exit code: 0
+?   	gojobtracker/cmd/server	[no test files]
+?   	gojobtracker/internal/handlers	[no test files]
+?   	gojobtracker/internal/models	[no test files]
+?   	gojobtracker/internal/store	[no test files]
+

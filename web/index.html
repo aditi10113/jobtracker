@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JobTrack — Job Application Tracker</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span>J</span> JobTrack</div>
+  <div class="api"><i></i> Go API connected</div>
+</header>
+<main>
+<section class="hero">
+ <div><p class="eyebrow">JOB SEARCH COMMAND CENTER</p><h1>Track every application.<br><span>Miss nothing.</span></h1><p class="sub">A full-stack job application tracker powered by a Go REST backend.</p></div>
+ <button class="add-btn" id="openAdd">+ Add application</button>
+</section>
+
+<section class="stats" id="stats"></section>
+
+<section class="toolbar">
+ <div class="search"><span>⌕</span><input id="search" placeholder="Search company, role or location..."></div>
+ <select id="statusFilter"><option value="">All statuses</option><option>Applied</option><option>Screening</option><option>Interview</option><option>Offer</option><option>Rejected</option></select>
+ <select id="priorityFilter"><option value="">All priorities</option><option>High</option><option>Medium</option><option>Low</option></select>
+</section>
+
+<section id="jobs" class="jobs"></section>
+</main>
+
+<div id="modal" class="modal hidden">
+ <div class="modal-card">
+  <button class="close" id="closeModal">×</button>
+  <p class="eyebrow" id="modalEyebrow">NEW APPLICATION</p>
+  <h2 id="modalTitle">Add job</h2>
+  <form id="jobForm">
+   <input type="hidden" name="id">
+   <div class="form-grid">
+    <label>Company*<input name="company" required placeholder="Company name"></label>
+    <label>Role*<input name="role" required placeholder="Software Engineer"></label>
+    <label>Location<input name="location" placeholder="Remote / Bengaluru"></label>
+    <label>Status*<select name="status" required><option>Applied</option><option>Screening</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></label>
+    <label>Priority<select name="priority"><option>High</option><option selected>Medium</option><option>Low</option></select></label>
+    <label>Salary<input name="salary" placeholder="₹8-12 LPA"></label>
+    <label>Applied date<input name="appliedDate" type="date"></label>
+    <label>Interview date<input name="interviewDate" type="date"></label>
+   </div>
+   <label>Job URL<input name="jobUrl" type="url" placeholder="https://..."></label>
+   <label>Notes<textarea name="notes" rows="4" placeholder="Recruiter details, preparation notes, follow-up..."></textarea></label>
+   <button class="save" type="submit">Save application</button>
+   <p id="formError"></p>
+  </form>
+ </div>
+</div>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
